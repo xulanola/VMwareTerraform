@@ -76,6 +76,41 @@ resource "google_project_iam_binding" "iamserviceAccountActor-shared-vpc" {
 
 ## Directory Structure
 
+```
+|____environments
+| |____prod
+| | |____README.MD
+| | |____variables.tf
+| | |____main.tf
+| | |____outputs.tf
+| | |____ephemerial
+| | | |____README.md
+| | |____persistant
+| | | |____README.md
+| |____test
+| | |____README.MD
+| | |____variables.tf
+| | |____main.tf
+| | |____outputs.tf
+| | |____ephemerial
+| | | |____README.md
+| | |____persistant
+| | | |____README.md
+| |____dev
+| | |____README.MD
+| | |____variables.tf
+| | |____main.tf
+| | |____outputs.tf
+| | |____ephemerial
+| | | |____README.md
+| | |____persistant
+| | | |____README.md
+| |____README.MD
+| |____variables.tf
+| |____main.tf
+| |____outputs.tf
+
+```
 
 
 ## Troubleshooting
