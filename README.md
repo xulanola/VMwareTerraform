@@ -32,8 +32,11 @@ terraform-admin is the project with the service account that we will use for all
 - Folder Layout
   * Persistent = parts of the application stack that have persistence tied to them ie Database servers
   * Ephemeral = parts of the application stack that can be blown away ie webservers / k8s compute nodes
+  * Dev = development code base. Should NOT house any systems or code that cannot be destroyed on a regular basis. Promotes only to "Test".
+  * Test = Systems promoted from development (dev) - used for validating changes made in development and user testing
+  * Prod = Production systems that are user facing - requires tight change control
 - If your code is not ready for terraform runs name your `terraform.tfvars` to `terraform.tfvars.skip`
-- Using snakes `_` vs kebab `-` : for variable names use snake but for values inside of the variable use kebab. E.g:
+- Using underscore `_` vs dash `-` : for variable names use underscores but for values inside of the variable use dashes. E.g:
 ```
 GOOD....
 project_name       = {
@@ -46,7 +49,7 @@ project_name       = {
 }
 ```
 
-Snakes must be used for resource names as well, an example is shown below:
+Underscores must be used for resource names as well, an example is shown below:
 ```
 GOOD...
 module "db_server" {
@@ -76,6 +79,41 @@ resource "google_project_iam_binding" "iamserviceAccountActor-shared-vpc" {
 
 ## Directory Structure
 
+```
+|____environments
+| |____prod
+| | |____README.MD
+| | |____variables.tf
+| | |____main.tf
+| | |____outputs.tf
+| | |____ephemerial
+| | | |____README.md
+| | |____persistant
+| | | |____README.md
+| |____test
+| | |____README.MD
+| | |____variables.tf
+| | |____main.tf
+| | |____outputs.tf
+| | |____ephemerial
+| | | |____README.md
+| | |____persistant
+| | | |____README.md
+| |____dev
+| | |____README.MD
+| | |____variables.tf
+| | |____main.tf
+| | |____outputs.tf
+| | |____ephemerial
+| | | |____README.md
+| | |____persistant
+| | | |____README.md
+| |____README.MD
+| |____variables.tf
+| |____main.tf
+| |____outputs.tf
+
+```
 
 
 ## Troubleshooting
